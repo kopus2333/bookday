@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세계 책의 날 4.23, 출판인 PICK 인생책</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cherry-pink: #FFB7C5; 
+            --soft-pink: #FFF0F3;
+            --deep-pink: #D48192;
+            --bg-paper: #FFFBFC;
+            --text-main: #333;
+            --border-color: #F7E1E5;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-paper);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-image: url('https://www.transparenttextures.com/patterns/pollen.png');
+        }
+
+        h1, .book-info h2 {
+            font-family: 'Nanum Myeongjo', serif;
+        }
+
+        header {
+            background: linear-gradient(135deg, #FFDEE9 0%, #B5FFFC 100%);
+            color: #5D5D5D;
+            text-align: center;
+            padding: 6rem 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header h1 {
+            margin: 0 0 1.2rem 0;
+            font-size: 3.2rem;
+            color: var(--deep-pink);
+            letter-spacing: -1px;
+            font-weight: 800;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 1.3rem;
+            font-family: 'Gowun Batang', serif;
+            color: #7A8B99;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem 5rem 1.5rem;
+        }
+
+        .summary-wrapper {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .count-summary {
+            background-color: white;
+            padding: 0.8rem 2.5rem;
+            border-radius: 50px;
+            display: inline-block;
+            font-size: 1.1rem;
+            color: var(--deep-pink);
+            box-shadow: 0 4px 15px rgba(255, 183, 197, 0.2);
+            border: 1px solid var(--border-color);
+            font-weight: 700;
+        }
+
+        .search-wrapper {
+            max-width: 600px;
+            margin: 0 auto 3.5rem auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            padding-right: 4rem;
+            border-radius: 40px;
+            border: 2px solid var(--border-color);
+            background-color: white;
+            font-size: 1.1rem;
+            font-family: 'Noto Sans KR', sans-serif;
+            color: var(--text-main);
+            box-shadow: 0 10px 20px rgba(212, 146, 146, 0.05);
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--cherry-pink);
+            box-shadow: 0 10px 25px rgba(212, 129, 146, 0.15);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.4rem;
+            color: var(--cherry-pink);
+            cursor: pointer;
+        }
+
+        .book-grid {
+            display: none;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2.5rem;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-link {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+        }
+
+        .book-card {
+            background-color: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(212, 129, 146, 0.05);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(212, 129, 146, 0.15);
+            border-color: var(--cherry-pink);
+        }
+
+        .cover-area {
+            width: 100%;
+            height: 240px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, var(--soft-pink), #FFFFFF);
+            padding: 2rem 0 1rem 0;
+            position: relative;
+        }
+
+        .cover-area img {
+            height: 85%;
+            width: auto;
+            object-fit: contain;
+            box-shadow: 5px 12px 24px rgba(0,0,0,0.15);
+            border-radius: 4px;
+            transition: transform 0.4s ease;
+        }
+
+        .book-card:hover .cover-area img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 1.5rem 1.8rem 2rem 1.8rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-info {
+            margin-bottom: 1.2rem;
+            text-align: center;
+        }
+
+        .book-info h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: #111;
+            line-height: 1.3;
+            word-break: keep-all;
+            font-weight: 800;
+        }
+
+        /* 책 제목 하단의 저자 | 출판사 정보 스타일 */
+        .book-metadata {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+            color: #888;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 400;
+        }
+
+        .reason-box {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quote-text {
+            margin: 0;
+            line-height: 1.8;
+            color: #555;
+            font-size: 1.05rem;
+            text-align: justify;
+            text-justify: inter-character;
+            word-break: keep-all;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 400;
+            position: relative;
+        }
+
+        .recommender-info {
+            display: block;
+            text-align: right;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--deep-pink);
+            font-weight: 600;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        #loader {
+            text-align: center;
+            padding: 60px;
+            font-size: 1.2rem;
+            color: var(--deep-pink);
+            font-family: 'Gowun Batang', serif;
+        }
+
+        .pagination {
+            text-align: center;
+            margin-top: 4.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .pagination-button {
+            background-color: white;
+            color: var(--deep-pink);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .pagination-button.active {
+            background-color: var(--deep-pink);
+            color: white;
+        }
+
+        .no-results {
+            text-align: center;
+            grid-column: 1 / -1;
+            padding: 4rem;
+            font-size: 1.2rem;
+            color: #8E8E8E;
+            font-family: 'Gowun Batang', serif;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            .book-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🌸 세계 책의 날 4.23, 출판인 PICK 인생책</h1>
+        <p>이 책 안 본 사람 없게 해주세요 🙏 <br> 한국출판인회의가 함께하는 ‘세계 책의 날’, 출판인의 인생책 큐레이션✨</p>
+    </header>
+
+    <div class="container">
+        <div class="summary-wrapper">
+            <div class="count-summary" id="count-summary">로딩중...</div>
+        </div>
+
+        <div class="search-wrapper">
+            <input type="text" id="search-input" class="search-input" placeholder="책 제목, 저자, 출판사를 검색해 보세요.">
+            <span class="search-icon">🔍</span>
+        </div>
+        
+        <div id="loader">🌸 로딩중... 📖</div>
+        
+        <div class="book-grid" id="book-grid"></div>
+        <div class="pagination" id="pagination"></div>
+    </div>
+
+    <script>
+        function parseCSV(text) {
+            const result = [];
+            let row = [];
+            let field = '';
+            let inQuotes = false;
+
+            for (let i = 0; i < text.length; i++) {
+                const char = text[i];
+                const nextChar = text[i + 1];
+
+                if (inQuotes) {
+                    if (char === '"' && nextChar === '"') {
+                        field += '"';
+                        i++;
+                    } else if (char === '"') {
+                        inQuotes = false;
+                    } else {
+                        field += char;
+                    }
+                } else {
+                    if (char === '"') {
+                        inQuotes = true;
+                    } else if (char === ',') {
+                        row.push(field.trim());
+                        field = '';
+                    } else if (char === '\n' || char === '\r') {
+                        if (field || row.length > 0) {
+                            row.push(field.trim());
+                            result.push(row);
+                            field = '';
+                            row = [];
+                        }
+                        if (char === '\r' && nextChar === '\n') i++;
+                    } else {
+                        field += char;
+                    }
+                }
+            }
+            if (field || row.length > 0) {
+                row.push(field.trim());
+                result.push(row);
+            }
+            return result;
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        let allBooks = []; 
+        let filteredBooks = []; 
+        let currentPage = 1;
+        const itemsPerPage = 12;
+
+        function displayBooks(page) {
+            const grid = document.getElementById('book-grid');
+            grid.innerHTML = '';
+            
+            if (filteredBooks.length === 0) {
+                grid.innerHTML = `<div class="no-results">🌸 찾는 도서가 없는 것 같아요. 다른 검색어를 입력해 보세요.</div>`;
+                grid.style.display = 'grid';
+                document.getElementById('pagination').innerHTML = '';
+                return;
+            }
+
+            const startIndex = (page - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const booksToDisplay = filteredBooks.slice(startIndex, endIndex);
+
+            booksToDisplay.forEach(book => {
+                const cardLink = document.createElement('a');
+                cardLink.className = 'card-link';
+                cardLink.href = book.url || '#';
+                cardLink.target = '_blank';
+
+                cardLink.innerHTML = `
+                    <div class="book-card">
+                        <div class="cover-area">
+                            <img src="${book.cover}" alt="${book.title}" onerror="this.src='https://via.placeholder.com/150x220?text=No+Cover'">
+                        </div>
+                        <div class="card-content">
+                            <div class="book-info">
+                                <h2> ${book.title}</h2>
+                                <div class="book-metadata">${book.author} | ${book.publisher}</div>
+                            </div>
+                            <div class="reason-box">
+                                <p class="quote-text">💬 "${book.reason}"</p>
+                                <span class="recommender-info">👤 ${book.name} 님 ✨<br>(${book.company} ${book.role})</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(cardLink);
+            });
+
+            grid.style.display = 'grid';
+            document.getElementById('loader').style.display = 'none';
+        }
+
+        function setupPagination(totalItems) {
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            
+            if (totalPages <= 1) return;
+
+            for (let i = 1; i <= totalPages; i++) {
+                const btn = document.createElement('button');
+                btn.className = `pagination-button ${i === currentPage ? 'active' : ''}`;
+                btn.innerText = i;
+                btn.onclick = () => {
+                    currentPage = i;
+                    displayBooks(currentPage);
+                    setupPagination(totalItems);
+                    const containerTop = document.querySelector('.summary-wrapper').offsetTop;
+                    window.scrollTo({ top: containerTop - 20, behavior: 'smooth' });
+                };
+                pagination.appendChild(btn);
+            }
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('search-input').value.toLowerCase().trim();
+            
+            if (query === "") {
+                filteredBooks = [...allBooks];
+            } else {
+                filteredBooks = allBooks.filter(book => 
+                    book.title.toLowerCase().includes(query) || 
+                    book.author.toLowerCase().includes(query) || 
+                    book.publisher.toLowerCase().includes(query)
+                );
+            }
+            
+            currentPage = 1;
+            displayBooks(currentPage);
+            setupPagination(filteredBooks.length);
+        }
+
+        async function loadBooks() {
+            try {
+                const response = await fetch('423data.csv');
+                let csvText = await response.text();
+                csvText = csvText.replace(/^\uFEFF/, '');
+                
+                const data = parseCSV(csvText);
+                const header = data[0].map(h => h.trim());
+                const rows = data.slice(1);
+
+                const getIdx = (name) => header.indexOf(name);
+                const idx = {
+                    company: getIdx('소속'),
+                    role: getIdx('직책'),
+                    name: getIdx('표기명'),
+                    title: getIdx('추천도서명'),
+                    author: getIdx('저자'),
+                    publisher: getIdx('출판사'),
+                    reason: getIdx('추천이유'),
+                    url: getIdx('도서 url'),
+                    cover: getIdx('표지 url')
+                };
+
+                allBooks = rows.map(row => ({
+                    company: row[idx.company] || '',
+                    role: row[idx.role] || '',
+                    name: row[idx.name] || '',
+                    title: row[idx.title] || '',
+                    author: row[idx.author] || '',
+                    publisher: row[idx.publisher] || '',
+                    reason: row[idx.reason] || '',
+                    url: row[idx.url] || '',
+                    cover: row[idx.cover] || ''
+                })).filter(b => b.title);
+
+                shuffleArray(allBooks);
+
+                document.getElementById('count-summary').innerHTML = `현재 <strong>${allBooks.length}명</strong>의 추천이 모였습니다.`;
+
+                filteredBooks = [...allBooks];
+                displayBooks(currentPage);
+                setupPagination(filteredBooks.length);
+
+                document.getElementById('search-input').addEventListener('input', handleSearch);
+
+            } catch (error) {
+                document.getElementById('loader').innerHTML = `⚠️ 데이터를 로드하지 못했습니다.`;
+            }
+        }
+
+        window.onload = loadBooks;
+    </script>
+</body>
+</html>
