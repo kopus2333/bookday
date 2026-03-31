@@ -7,12 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --cherry-pink: #FFB7C5; 
-            --soft-pink: #FFF0F3;
-            --deep-pink: #D48192;
-            --bg-paper: #FFFBFC;
-            --text-main: #333;
-            --border-color: #F7E1E5;
+            --rose-red: #D62246; /* 생기 있는 붉은 장미 */
+            --soft-rose: #FFF0F2; /* 아주 연한 장밋빛 화이트 */
+            --deep-rose: #8B0021; /* 짙고 깊은 장미 (크림슨) */
+            --bg-paper: #FFFAFB; /* 따뜻한 느낌의 바탕색 */
+            --text-main: #2D1B1E; /* 붉은 기운이 도는 어두운 색 */
+            --border-color: #F7D1D7;
         }
 
         body {
@@ -22,7 +22,8 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            background-image: url('https://www.transparenttextures.com/patterns/pollen.png');
+            /* 은은한 종이 질감 패턴으로 변경하여 우아함 강조 */
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
         }
 
         h1, .book-info h2 {
@@ -30,18 +31,22 @@
         }
 
         header {
-            background: linear-gradient(135deg, #FFDEE9 0%, #B5FFFC 100%);
-            color: #5D5D5D;
+            /* 장미를 연상시키는 짙은 붉은색 그라데이션 */
+            background: linear-gradient(135deg, var(--deep-rose) 0%, #C71534 100%);
+            color: #FFF0F2;
             text-align: center;
-            padding: 6rem 1rem;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--border-color);
+            /* 유선형 곡선 효과를 돋보이게 하기 위해 하단 패딩과 마진 여유 추가 */
+            padding: 6rem 1rem 8rem 1rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 25px rgba(139, 0, 33, 0.15);
+            /* 단순 직사각형을 탈피한 감도 높은 비대칭 유선형(나선 흐름) 곡선 */
+            border-radius: 0 0 60% 40% / 0 0 45px 35px;
         }
 
         header h1 {
             margin: 0 0 1.2rem 0;
             font-size: 3.2rem;
-            color: var(--deep-pink);
+            color: #FFFFFF;
             letter-spacing: -1px;
             font-weight: 800;
         }
@@ -50,7 +55,7 @@
             margin: 0;
             font-size: 1.3rem;
             font-family: 'Gowun Batang', serif;
-            color: #7A8B99;
+            color: #FFD8DF; /* 가독성을 위한 연한 핑크빛 */
         }
 
         .container {
@@ -70,15 +75,15 @@
             border-radius: 50px;
             display: inline-block;
             font-size: 1.1rem;
-            color: var(--deep-pink);
-            box-shadow: 0 4px 15px rgba(255, 183, 197, 0.2);
+            color: var(--deep-rose);
+            box-shadow: 0 4px 15px rgba(139, 0, 33, 0.1);
             border: 1px solid var(--border-color);
             font-weight: 700;
         }
 
         .search-wrapper {
             max-width: 600px;
-            margin: 0 auto 3.5rem auto;
+            margin: 0 auto 2rem auto; /* 수정됨: 카드와 어울리도록 하단 마진 축소 */
             position: relative;
         }
 
@@ -92,15 +97,15 @@
             font-size: 1.1rem;
             font-family: 'Noto Sans KR', sans-serif;
             color: var(--text-main);
-            box-shadow: 0 10px 20px rgba(212, 146, 146, 0.05);
+            box-shadow: 0 10px 20px rgba(139, 0, 33, 0.05);
             transition: all 0.3s ease;
             box-sizing: border-box;
         }
 
         .search-input:focus {
             outline: none;
-            border-color: var(--cherry-pink);
-            box-shadow: 0 10px 25px rgba(212, 129, 146, 0.15);
+            border-color: var(--rose-red);
+            box-shadow: 0 10px 25px rgba(214, 34, 70, 0.15);
         }
 
         .search-icon {
@@ -109,9 +114,50 @@
             top: 50%;
             transform: translateY(-50%);
             font-size: 1.4rem;
-            color: var(--cherry-pink);
+            color: var(--rose-red);
             cursor: pointer;
         }
+
+        /* 새롭게 추가된 통계 카드 스타일 */
+        .stats-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            padding: 1.2rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(139, 0, 33, 0.08);
+            min-width: 120px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card .stat-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: 'Gowun Batang', serif;
+        }
+
+        .stat-card .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        /* 3가지 다른 테마 색상 적용 */
+        .stat-card.publishers { background-color: var(--soft-rose); color: var(--deep-rose); }
+        .stat-card.books { background-color: #FFFFFF; color: var(--rose-red); }
+        .stat-card.people { background-color: var(--deep-rose); color: #FFFFFF; border-color: var(--deep-rose); }
 
         .book-grid {
             display: none;
@@ -135,7 +181,7 @@
             background-color: #FFFFFF;
             border: 1px solid var(--border-color);
             border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(212, 129, 146, 0.05);
+            box-shadow: 0 10px 30px rgba(139, 0, 33, 0.04);
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             display: flex;
             flex-direction: column;
@@ -145,8 +191,8 @@
 
         .book-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(212, 129, 146, 0.15);
-            border-color: var(--cherry-pink);
+            box-shadow: 0 25px 50px rgba(139, 0, 33, 0.12);
+            border-color: var(--rose-red);
         }
 
         .cover-area {
@@ -155,7 +201,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(to bottom, var(--soft-pink), #FFFFFF);
+            background: linear-gradient(to bottom, var(--soft-rose), #FFFFFF);
             padding: 2rem 0 1rem 0;
             position: relative;
         }
@@ -227,7 +273,7 @@
             text-align: right;
             margin-top: 1.5rem;
             font-size: 0.95rem;
-            color: var(--deep-pink);
+            color: var(--deep-rose);
             font-weight: 600;
             font-family: 'Noto Sans KR', sans-serif;
         }
@@ -236,7 +282,7 @@
             text-align: center;
             padding: 60px;
             font-size: 1.2rem;
-            color: var(--deep-pink);
+            color: var(--deep-rose);
             font-family: 'Gowun Batang', serif;
         }
 
@@ -251,7 +297,7 @@
 
         .pagination-button {
             background-color: white;
-            color: var(--deep-pink);
+            color: var(--deep-rose);
             border: 1px solid var(--border-color);
             padding: 0.6rem 1.2rem;
             border-radius: 12px;
@@ -261,8 +307,9 @@
         }
 
         .pagination-button.active {
-            background-color: var(--deep-pink);
+            background-color: var(--deep-rose);
             color: white;
+            border-color: var(--deep-rose);
         }
 
         .no-results {
@@ -284,7 +331,7 @@
         }
 
         footer a {
-            color: var(--deep-pink);
+            color: var(--deep-rose);
             text-decoration: none;
             font-weight: 600;
         }
@@ -294,6 +341,11 @@
         }
 
         @media (max-width: 768px) {
+            header {
+                padding: 4rem 1rem 6rem 1rem;
+                /* 모바일에서는 곡선 비율을 조금 완만하게 조정 */
+                border-radius: 0 0 50% 50% / 0 0 25px 25px;
+            }
             header h1 { font-size: 2.2rem; }
             .book-grid { grid-template-columns: 1fr; }
         }
@@ -302,7 +354,7 @@
 <body>
 
     <header>
-        <h1>🌸 세계 책의 날 4.23, 출판인 PICK 인생책</h1>
+        <h1>🌹 세계 책의 날 4.23, 출판인 PICK 인생책 📕</h1>
         <p>이 책 안 본 사람 없게 해주세요 🙏 <br> 한국출판인회의가 함께하는 ‘세계 책의 날’, 출판인의 인생책 큐레이션✨</p>
     </header>
 
@@ -314,6 +366,22 @@
         <div class="search-wrapper">
             <input type="text" id="search-input" class="search-input" placeholder="책 제목, 저자, 출판사를 검색해 보세요.">
             <span class="search-icon">🔍</span>
+        </div>
+        
+        <!-- 통계 카드 UI 추가 -->
+        <div class="stats-wrapper" id="stats-wrapper" style="display: none;">
+            <div class="stat-card publishers">
+                <div class="stat-title">참여 출판사</div>
+                <div class="stat-number" id="stat-publishers">-</div>
+            </div>
+            <div class="stat-card books">
+                <div class="stat-title">추천받은 책</div>
+                <div class="stat-number" id="stat-books">-</div>
+            </div>
+            <div class="stat-card people">
+                <div class="stat-title">참여 출판인</div>
+                <div class="stat-number" id="stat-people">-</div>
+            </div>
         </div>
         
         <div id="loader">🌸 로딩중... 📖</div>
@@ -508,6 +576,17 @@
                 shuffleArray(allBooks);
 
                 document.getElementById('count-summary').innerHTML = `현재 <strong>${allBooks.length}명</strong>의 추천이 모였습니다.`;
+
+                // 통계 데이터 계산 (Set을 이용한 중복 제거)
+                const uniquePublishers = new Set(allBooks.map(b => b.company).filter(Boolean)).size;
+                const uniqueBooks = new Set(allBooks.map(b => b.title).filter(Boolean)).size;
+                const uniquePeople = new Set(allBooks.map(b => b.name + '|' + b.company).filter(n => n !== '|')).size;
+
+                // 통계 카드에 값 반영 및 노출
+                document.getElementById('stat-publishers').innerText = uniquePublishers;
+                document.getElementById('stat-books').innerText = uniqueBooks;
+                document.getElementById('stat-people').innerText = uniquePeople;
+                document.getElementById('stats-wrapper').style.display = 'flex';
 
                 filteredBooks = [...allBooks];
                 displayBooks(currentPage);
