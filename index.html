@@ -7,11 +7,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --rose-red: #D62246; /* 생기 있는 붉은 장미 */
-            --soft-rose: #FFF0F2; /* 아주 연한 장밋빛 화이트 */
-            --deep-rose: #8B0021; /* 짙고 깊은 장미 (크림슨) */
-            --bg-paper: #FFFAFB; /* 따뜻한 느낌의 바탕색 */
-            --text-main: #2D1B1E; /* 붉은 기운이 도는 어두운 색 */
+            --rose-red: #D62246;
+            --soft-rose: #FFF0F2;
+            --deep-rose: #8B0021;
+            --bg-paper: #FFFAFB;
+            --text-main: #2D1B1E;
             --border-color: #F7D1D7;
         }
 
@@ -22,7 +22,6 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            /* 은은한 종이 질감 패턴으로 변경하여 우아함 강조 */
             background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
         }
 
@@ -31,15 +30,12 @@
         }
 
         header {
-            /* 장미를 연상시키는 짙은 붉은색 그라데이션 */
             background: linear-gradient(135deg, var(--deep-rose) 0%, #C71534 100%);
             color: #FFF0F2;
             text-align: center;
-            /* 유선형 곡선 효과를 돋보이게 하기 위해 하단 패딩과 마진 여유 추가 */
             padding: 6rem 1rem 8rem 1rem;
             margin-bottom: 3rem;
             box-shadow: 0 10px 25px rgba(139, 0, 33, 0.15);
-            /* 단순 직사각형을 탈피한 감도 높은 비대칭 유선형(나선 흐름) 곡선 */
             border-radius: 0 0 60% 40% / 0 0 45px 35px;
         }
 
@@ -55,7 +51,7 @@
             margin: 0;
             font-size: 1.3rem;
             font-family: 'Gowun Batang', serif;
-            color: #FFD8DF; /* 가독성을 위한 연한 핑크빛 */
+            color: #FFD8DF;
         }
 
         .container {
@@ -83,7 +79,7 @@
 
         .search-wrapper {
             max-width: 600px;
-            margin: 0 auto 2rem auto; /* 수정됨: 카드와 어울리도록 하단 마진 축소 */
+            margin: 0 auto 2rem auto;
             position: relative;
         }
 
@@ -118,7 +114,40 @@
             cursor: pointer;
         }
 
-        /* 새롭게 추가된 통계 카드 스타일 */
+        /* 탭 버튼 스타일 추가 */
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .tab-button {
+            padding: 0.8rem 2.5rem;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            background-color: white;
+            color: #666;
+            border: 2px solid var(--border-color);
+            cursor: pointer;
+            font-family: 'Gowun Batang', serif;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(139, 0, 33, 0.05);
+        }
+
+        .tab-button:hover {
+            border-color: var(--rose-red);
+            color: var(--rose-red);
+        }
+
+        .tab-button.active {
+            background-color: var(--deep-rose);
+            color: white;
+            border-color: var(--deep-rose);
+            box-shadow: 0 6px 15px rgba(139, 0, 33, 0.2);
+        }
+
         .stats-wrapper {
             display: flex;
             justify-content: center;
@@ -154,7 +183,6 @@
             font-family: 'Noto Sans KR', sans-serif;
         }
 
-        /* 3가지 다른 테마 색상 적용 */
         .stat-card.publishers { background-color: var(--soft-rose); color: var(--deep-rose); }
         .stat-card.books { background-color: #FFFFFF; color: var(--rose-red); }
         .stat-card.people { background-color: var(--deep-rose); color: #FFFFFF; border-color: var(--deep-rose); }
@@ -195,19 +223,43 @@
             border-color: var(--rose-red);
         }
 
+        /* 추천인 상단 배치 스타일 */
+        .recommender-top {
+            padding: 1.5rem 1.8rem 1rem 1.8rem;
+            text-align: center;
+            background-color: #FFFFFF;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .recommender-name {
+            display: block;
+            font-size: 1.15rem;
+            color: var(--deep-rose);
+            font-weight: 700;
+            font-family: 'Gowun Batang', serif;
+        }
+
+        .recommender-role {
+            display: block;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.3rem;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
         .cover-area {
             width: 100%;
-            height: 240px;
+            height: 220px;
             display: flex;
             justify-content: center;
             align-items: center;
             background: linear-gradient(to bottom, var(--soft-rose), #FFFFFF);
-            padding: 2rem 0 1rem 0;
+            padding: 1.5rem 0 1rem 0;
             position: relative;
         }
 
         .cover-area img {
-            height: 85%;
+            height: 90%;
             width: auto;
             object-fit: contain;
             box-shadow: 5px 12px 24px rgba(0,0,0,0.15);
@@ -220,7 +272,7 @@
         }
 
         .card-content {
-            padding: 1.5rem 1.8rem 2rem 1.8rem;
+            padding: 1rem 1.8rem 2rem 1.8rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -252,7 +304,7 @@
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start;
         }
 
         .quote-text {
@@ -266,16 +318,6 @@
             font-family: 'Noto Sans KR', sans-serif;
             font-weight: 400;
             position: relative;
-        }
-
-        .recommender-info {
-            display: block;
-            text-align: right;
-            margin-top: 1.5rem;
-            font-size: 0.95rem;
-            color: var(--deep-rose);
-            font-weight: 600;
-            font-family: 'Noto Sans KR', sans-serif;
         }
 
         #loader {
@@ -343,7 +385,6 @@
         @media (max-width: 768px) {
             header {
                 padding: 4rem 1rem 6rem 1rem;
-                /* 모바일에서는 곡선 비율을 조금 완만하게 조정 */
                 border-radius: 0 0 50% 50% / 0 0 25px 25px;
             }
             header h1 { font-size: 2.2rem; }
@@ -367,8 +408,13 @@
             <input type="text" id="search-input" class="search-input" placeholder="책 제목, 저자, 출판사를 검색해 보세요.">
             <span class="search-icon">🔍</span>
         </div>
+
+        <!-- 탭 UI 추가 -->
+        <div class="tab-container">
+            <button class="tab-button active" data-tab="자사도서" onclick="setTab('자사도서')">자사도서</button>
+            <button class="tab-button" data-tab="타사도서" onclick="setTab('타사도서')">타사도서</button>
+        </div>
         
-        <!-- 통계 카드 UI 추가 -->
         <div class="stats-wrapper" id="stats-wrapper" style="display: none;">
             <div class="stat-card publishers">
                 <div class="stat-title">참여 출판사</div>
@@ -452,6 +498,7 @@
         let filteredBooks = []; 
         let currentPage = 1;
         const itemsPerPage = 12;
+        let currentTab = '자사도서'; // 기본 선택 탭
 
         function displayBooks(page) {
             const grid = document.getElementById('book-grid');
@@ -476,6 +523,11 @@
 
                 cardLink.innerHTML = `
                     <div class="book-card">
+                        <!-- 추천인 정보 상단 배치 -->
+                        <div class="recommender-top">
+                            <span class="recommender-name">👤 ${book.name} 님 ✨</span>
+                            <span class="recommender-role">(${book.company} ${book.role})</span>
+                        </div>
                         <div class="cover-area">
                             <img src="${book.cover}" alt="${book.title}" onerror="this.src='https://via.placeholder.com/150x220?text=No+Cover'">
                         </div>
@@ -486,7 +538,6 @@
                             </div>
                             <div class="reason-box">
                                 <p class="quote-text">💬 "${book.reason}"</p>
-                                <span class="recommender-info">👤 ${book.name} 님 ✨<br>(${book.company} ${book.role})</span>
                             </div>
                         </div>
                     </div>
@@ -520,22 +571,38 @@
             }
         }
 
-        function handleSearch() {
+        // 검색 및 탭 분류를 함께 처리하는 함수
+        function filterContent() {
             const query = document.getElementById('search-input').value.toLowerCase().trim();
             
-            if (query === "") {
-                filteredBooks = [...allBooks];
-            } else {
-                filteredBooks = allBooks.filter(book => 
+            filteredBooks = allBooks.filter(book => {
+                const matchTab = book.category === currentTab;
+                const matchSearch = query === "" || 
                     book.title.toLowerCase().includes(query) || 
                     book.author.toLowerCase().includes(query) || 
-                    book.publisher.toLowerCase().includes(query)
-                );
-            }
+                    book.publisher.toLowerCase().includes(query);
+                
+                return matchTab && matchSearch;
+            });
             
             currentPage = 1;
             displayBooks(currentPage);
             setupPagination(filteredBooks.length);
+        }
+
+        // 탭 변경 함수
+        function setTab(tabName) {
+            currentTab = tabName;
+            
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                if(btn.dataset.tab === tabName) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            filterContent();
         }
 
         async function loadBooks() {
@@ -550,6 +617,7 @@
 
                 const getIdx = (name) => header.indexOf(name);
                 const idx = {
+                    category: getIdx('구분'), // 구분 항목 추가
                     company: getIdx('소속'),
                     role: getIdx('직책'),
                     name: getIdx('표기명'),
@@ -562,6 +630,7 @@
                 };
 
                 allBooks = rows.map(row => ({
+                    category: row[idx.category] || '',
                     company: row[idx.company] || '',
                     role: row[idx.role] || '',
                     name: row[idx.name] || '',
@@ -577,22 +646,19 @@
 
                 document.getElementById('count-summary').innerHTML = `현재 <strong>${allBooks.length}명</strong>의 추천이 모였습니다.`;
 
-                // 통계 데이터 계산 (Set을 이용한 중복 제거)
                 const uniquePublishers = new Set(allBooks.map(b => b.company).filter(Boolean)).size;
                 const uniqueBooks = new Set(allBooks.map(b => b.title).filter(Boolean)).size;
                 const uniquePeople = new Set(allBooks.map(b => b.name + '|' + b.company).filter(n => n !== '|')).size;
 
-                // 통계 카드에 값 반영 및 노출
                 document.getElementById('stat-publishers').innerText = uniquePublishers;
                 document.getElementById('stat-books').innerText = uniqueBooks;
                 document.getElementById('stat-people').innerText = uniquePeople;
                 document.getElementById('stats-wrapper').style.display = 'flex';
 
-                filteredBooks = [...allBooks];
-                displayBooks(currentPage);
-                setupPagination(filteredBooks.length);
+                // 초기 로드 시 분류 적용
+                filterContent();
 
-                document.getElementById('search-input').addEventListener('input', handleSearch);
+                document.getElementById('search-input').addEventListener('input', filterContent);
 
             } catch (error) {
                 document.getElementById('loader').innerHTML = `⚠️ 데이터를 로드하지 못했습니다.`;
