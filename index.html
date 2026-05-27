@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>세계 책과 저작권의 날 4.23, 출판인 PICK 인생책</title>
+    <title>청년문화예술패스 X 출판인 PICK, 청년 인생책</title>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --rose-red: #D62246;
-            --soft-rose: #FFF0F2;
-            --deep-rose: #8B0021;
-            --bg-paper: #FFFAFB;
-            --text-main: #2D1B1E;
-            --border-color: #F7D1D7;
+            --primary-blue: #2563EB;
+            --soft-blue: #EFF6FF;
+            --deep-blue: #1E3A8A;
+            --bg-paper: #F8FAFF;
+            --text-main: #1B1F2D;
+            --border-color: #BFDBFE;
         }
 
         body {
@@ -30,12 +30,12 @@
         }
 
         header {
-            background: linear-gradient(135deg, var(--deep-rose) 0%, #C71534 100%);
-            color: #FFF0F2;
+            background: linear-gradient(135deg, var(--deep-blue) 0%, #3B82F6 100%);
+            color: #EFF6FF;
             text-align: center;
             padding: 6rem 1rem 8rem 1rem;
             margin-bottom: 3rem;
-            box-shadow: 0 10px 25px rgba(139, 0, 33, 0.15);
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.18);
             border-radius: 0 0 60% 40% / 0 0 45px 35px;
         }
 
@@ -51,7 +51,7 @@
             margin: 0;
             font-size: 1.3rem;
             font-family: 'Gowun Batang', serif;
-            color: #FFD8DF;
+            color: #C7DDFF;
         }
 
         .container {
@@ -71,8 +71,8 @@
             border-radius: 50px;
             display: inline-block;
             font-size: 1.1rem;
-            color: var(--deep-rose);
-            box-shadow: 0 4px 15px rgba(139, 0, 33, 0.1);
+            color: var(--deep-blue);
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.1);
             border: 1px solid var(--border-color);
             font-weight: 700;
         }
@@ -93,15 +93,15 @@
             font-size: 1.1rem;
             font-family: 'Noto Sans KR', sans-serif;
             color: var(--text-main);
-            box-shadow: 0 10px 20px rgba(139, 0, 33, 0.05);
+            box-shadow: 0 10px 20px rgba(30, 58, 138, 0.05);
             transition: all 0.3s ease;
             box-sizing: border-box;
         }
 
         .search-input:focus {
             outline: none;
-            border-color: var(--rose-red);
-            box-shadow: 0 10px 25px rgba(214, 34, 70, 0.15);
+            border-color: var(--primary-blue);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.18);
         }
 
         .search-icon {
@@ -110,7 +110,7 @@
             top: 50%;
             transform: translateY(-50%);
             font-size: 1.4rem;
-            color: var(--rose-red);
+            color: var(--primary-blue);
             cursor: pointer;
         }
 
@@ -126,7 +126,7 @@
             padding: 1.2rem 2rem;
             border-radius: 20px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(139, 0, 33, 0.08);
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.08);
             min-width: 120px;
             border: 1px solid var(--border-color);
             transition: transform 0.3s ease;
@@ -149,9 +149,9 @@
             font-family: 'Noto Sans KR', sans-serif;
         }
 
-        .stat-card.publishers { background-color: var(--soft-rose); color: var(--deep-rose); }
-        .stat-card.books { background-color: #FFFFFF; color: var(--rose-red); }
-        .stat-card.people { background-color: var(--deep-rose); color: #FFFFFF; border-color: var(--deep-rose); }
+        .stat-card.publishers { background-color: var(--soft-blue); color: var(--deep-blue); }
+        .stat-card.books { background-color: #FFFFFF; color: var(--primary-blue); }
+        .stat-card.people { background-color: var(--deep-blue); color: #FFFFFF; border-color: var(--deep-blue); }
 
         .book-grid {
             display: none;
@@ -169,7 +169,7 @@
             background-color: #FFFFFF;
             border: 1px solid var(--border-color);
             border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(139, 0, 33, 0.04);
+            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.05);
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             display: flex;
             flex-direction: column;
@@ -179,8 +179,8 @@
 
         .book-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(139, 0, 33, 0.12);
-            border-color: var(--rose-red);
+            box-shadow: 0 25px 50px rgba(30, 58, 138, 0.15);
+            border-color: var(--primary-blue);
         }
 
         /* 추천인 정보 영역 */
@@ -193,7 +193,7 @@
         .recommender-name {
             display: block;
             font-size: 1.2rem;
-            color: var(--deep-rose);
+            color: var(--deep-blue);
             font-weight: 700;
             font-family: 'Gowun Batang', serif;
         }
@@ -211,7 +211,7 @@
             display: flex;
             border-top: 1px dashed var(--border-color);
             border-bottom: 1px solid var(--border-color);
-            background-color: #FAFAFA;
+            background-color: #FAFBFF;
         }
 
         .card-tab {
@@ -230,14 +230,14 @@
         }
 
         .card-tab.active {
-            color: var(--deep-rose);
-            border-bottom: 3px solid var(--deep-rose);
+            color: var(--deep-blue);
+            border-bottom: 3px solid var(--deep-blue);
             background-color: #FFFFFF;
         }
 
         .card-tab:hover:not(.active) {
-            color: var(--rose-red);
-            background-color: #FFF0F2;
+            color: var(--primary-blue);
+            background-color: var(--soft-blue);
         }
 
         /* 책 내용 섹션 (클릭 시 이동할 수 있도록 감싸는 용도) */
@@ -261,7 +261,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(to bottom, var(--soft-rose), #FFFFFF);
+            background: linear-gradient(to bottom, var(--soft-blue), #FFFFFF);
             padding: 1.5rem 0 1rem 0;
             position: relative;
         }
@@ -344,7 +344,7 @@
             text-align: center;
             padding: 60px;
             font-size: 1.2rem;
-            color: var(--deep-rose);
+            color: var(--deep-blue);
             font-family: 'Gowun Batang', serif;
         }
 
@@ -359,7 +359,7 @@
 
         .pagination-button {
             background-color: white;
-            color: var(--deep-rose);
+            color: var(--deep-blue);
             border: 1px solid var(--border-color);
             padding: 0.6rem 1.2rem;
             border-radius: 12px;
@@ -369,9 +369,9 @@
         }
 
         .pagination-button.active {
-            background-color: var(--deep-rose);
+            background-color: var(--deep-blue);
             color: white;
-            border-color: var(--deep-rose);
+            border-color: var(--deep-blue);
         }
 
         .no-results {
@@ -393,7 +393,7 @@
         }
 
         footer a {
-            color: var(--deep-rose);
+            color: var(--deep-blue);
             text-decoration: none;
             font-weight: 600;
         }
@@ -415,8 +415,8 @@
 <body>
 
     <header>
-        <h1>🌹 세계 책과 저작권의 날 4.23, 출판인 PICK 인생책 📕</h1>
-        <p>이 책 안 본 사람 없게 해주세요 🙏 <br> 한국출판인회의가 함께하는 ‘세계 책과 저작권의 날’, 출판인의 인생책 큐레이션✨</p>
+        <h1>📘 청년문화예술패스 X 출판인 PICK, 청년 인생책 💙</h1>
+        <p>스무 살의 어느 날, 이 책 한 권쯤은 만나봐요 🙌 <br> 한국출판인회의 출판인이 청년에게 직접 건네는 인생책 큐레이션 ✨</p>
     </header>
 
         <div class="search-wrapper">
@@ -439,7 +439,7 @@
             </div>
         </div>
         
-        <div id="loader">🌸 로딩중... 📖</div>
+        <div id="loader">💙 로딩중... 📖</div>
         
         <div class="book-grid" id="book-grid"></div>
         <div class="pagination" id="pagination"></div>
@@ -447,7 +447,7 @@
 
     <footer>
         <p>© 2026 (사) 한국출판인회의 Korea Publishers Society. All rights reserved.</p>
-        <p></p>
+        <p>청년문화예술패스와 함께하는 청년 독서 큐레이션</p>
     </footer>
 
     <script>
@@ -531,7 +531,7 @@
             grid.innerHTML = '';
             
             if (filteredPeople.length === 0) {
-                grid.innerHTML = `<div class="no-results">🌸 찾는 결과가 없는 것 같아요. 다른 검색어를 입력해 보세요.</div>`;
+                grid.innerHTML = `<div class="no-results">💙 찾는 결과가 없는 것 같아요. 다른 검색어를 입력해 보세요.</div>`;
                 grid.style.display = 'grid';
                 document.getElementById('pagination').innerHTML = '';
                 return;
@@ -557,7 +557,7 @@
                                 <div class="book-metadata">${person.ourBook.author} | ${person.ourBook.publisher}</div>
                             </div>
                             <div class="reason-box">
-                                <p class="quote-text">💬 "${person.ourBook.reason}"</p>
+                                <p class="quote-text">💌 청년에게: "${person.ourBook.reason}"</p>
                             </div>
                         </div>
                     </a>
@@ -575,7 +575,7 @@
                                 <div class="book-metadata">${person.goodBook.author} | ${person.goodBook.publisher}</div>
                             </div>
                             <div class="reason-box">
-                                <p class="quote-text">💬 "${person.goodBook.reason}"</p>
+                                <p class="quote-text">💌 청년에게: "${person.goodBook.reason}"</p>
                             </div>
                         </div>
                     </a>
@@ -586,7 +586,7 @@
                 
                 cardDiv.innerHTML = `
                     <div class="recommender-top">
-                        <span class="recommender-name">👤 ${person.name} 님 ✨</span>
+                        <span class="recommender-name">💙 ${person.name} 님이 청년에게 ✨</span>
                         <span class="recommender-role">(${person.company} ${person.role})</span>
                     </div>
                     <div class="card-tabs">
@@ -622,7 +622,7 @@
                     currentPage = i;
                     displayBooks(currentPage);
                     setupPagination(totalItems);
-                    const containerTop = document.querySelector('.summary-wrapper').offsetTop;
+                    const containerTop = document.querySelector('.search-wrapper').offsetTop;
                     window.scrollTo({ top: containerTop - 20, behavior: 'smooth' });
                 };
                 pagination.appendChild(btn);
