@@ -402,6 +402,139 @@
             text-decoration: underline;
         }
 
+        /* 가장 많이 추천받은 책 랭킹 섹션 */
+        .ranking-section {
+            margin-bottom: 4rem;
+            padding: 2.5rem 2rem 2rem 2rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, var(--soft-blue) 100%);
+            border-radius: 28px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.06);
+        }
+
+        .ranking-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .ranking-title {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.6rem;
+            font-family: 'Nanum Myeongjo', serif;
+            font-weight: 800;
+            color: var(--deep-blue);
+            letter-spacing: -0.5px;
+        }
+
+        .ranking-subtitle {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #6B7280;
+            font-family: 'Gowun Batang', serif;
+        }
+
+        .ranking-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .ranking-item {
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.2rem 1rem 1.2rem 1rem;
+            display: flex;
+            gap: 0.9rem;
+            align-items: flex-start;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            overflow: hidden;
+        }
+
+        .ranking-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(30, 58, 138, 0.12);
+            border-color: var(--primary-blue);
+        }
+
+        .ranking-rank {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: var(--deep-blue);
+            color: #FFFFFF;
+            font-family: 'Nanum Myeongjo', serif;
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 0.25rem 0.7rem 0.3rem 0.5rem;
+            border-radius: 16px 0 16px 0;
+            letter-spacing: 0.5px;
+        }
+
+        .ranking-item.top-1 .ranking-rank { background: #1E3A8A; }
+        .ranking-item.top-2 .ranking-rank { background: #2563EB; }
+        .ranking-item.top-3 .ranking-rank { background: #3B82F6; }
+
+        .ranking-cover {
+            flex-shrink: 0;
+            width: 60px;
+            height: 84px;
+            object-fit: cover;
+            border-radius: 3px;
+            box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.12);
+            margin-top: 1.4rem;
+        }
+
+        .ranking-info {
+            flex-grow: 1;
+            min-width: 0;
+            padding-top: 1.4rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ranking-book-title {
+            font-family: 'Gowun Batang', serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #111;
+            line-height: 1.35;
+            margin: 0 0 0.3rem 0;
+            word-break: keep-all;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .ranking-book-meta {
+            font-size: 0.78rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+            word-break: keep-all;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .ranking-count {
+            display: inline-block;
+            background: var(--soft-blue);
+            color: var(--deep-blue);
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 0.2rem 0.7rem;
+            border-radius: 20px;
+            font-family: 'Noto Sans KR', sans-serif;
+            margin-top: auto;
+            align-self: flex-start;
+        }
+
         @media (max-width: 768px) {
             header {
                 padding: 4rem 1rem 6rem 1rem;
@@ -409,14 +542,16 @@
             }
             header h1 { font-size: 2.2rem; }
             .book-grid { grid-template-columns: 1fr; }
+            .ranking-grid { grid-template-columns: 1fr; }
+            .ranking-section { padding: 2rem 1.2rem 1.5rem 1.2rem; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>📘 청년문화예술패스 X 출판인 PICK, 청년 인생책 💙</h1>
-        <p>스무 살의 어느 날, 이 책 한 권쯤은 만나봐요 🙌 <br> 한국출판인회의 출판인이 청년에게 직접 건네는 인생책 큐레이션 ✨</p>
+        <h1>📘 청년문화예술패스 X 출판인 PICK, 청춘 독서 💙</h1>
+        <p>청년문화예술패스로 이제 책 살 수 있다! 🙌 <br> 출판인들이 엄선한 청춘독서 큐레이션 ✨</p>
     </header>
 
         <div class="search-wrapper">
@@ -437,6 +572,14 @@
                 <div class="stat-title">참여 출판인</div>
                 <div class="stat-number" id="stat-people">-</div>
             </div>
+        </div>
+        
+        <div class="ranking-section" id="ranking-section" style="display: none;">
+            <div class="ranking-header">
+                <h2 class="ranking-title">🏆 가장 많이 추천받은 책 TOP</h2>
+                <p class="ranking-subtitle">출판인들이 여러 번 골라낸, 청춘이라면 한 번쯤 만나봐야 할 책</p>
+            </div>
+            <div class="ranking-grid" id="ranking-grid"></div>
         </div>
         
         <div id="loader">💙 로딩중... 📖</div>
@@ -526,6 +669,48 @@
             }
         };
 
+        // 추천 많이 받은 책 랭킹 렌더링
+        function renderRanking(books) {
+            // 2회 이상 추천받은 책만 추리고, 부족하면 상위 N개로 fallback
+            let topBooks = books
+                .filter(b => b.count >= 2)
+                .sort((a, b) => b.count - a.count);
+            
+            if (topBooks.length === 0) {
+                // 다회 추천이 없으면 상위 8개로 대체 표시
+                topBooks = books.sort((a, b) => b.count - a.count).slice(0, 8);
+            } else {
+                // 최대 12권까지만 노출
+                topBooks = topBooks.slice(0, 12);
+            }
+
+            if (topBooks.length === 0) return;
+
+            const grid = document.getElementById('ranking-grid');
+            grid.innerHTML = '';
+
+            topBooks.forEach((book, index) => {
+                const rank = index + 1;
+                const rankClass = rank <= 3 ? `top-${rank}` : '';
+                const item = document.createElement('a');
+                item.href = book.url || '#';
+                item.target = '_blank';
+                item.className = `ranking-item ${rankClass}`;
+                item.innerHTML = `
+                    <div class="ranking-rank">#${rank}</div>
+                    <img class="ranking-cover" src="${book.cover}" onerror="this.src='https://via.placeholder.com/60x84?text=No+Cover'">
+                    <div class="ranking-info">
+                        <h3 class="ranking-book-title">${book.title}</h3>
+                        <div class="ranking-book-meta">${book.author} | ${book.publisher}</div>
+                        <span class="ranking-count">${book.count}명이 추천</span>
+                    </div>
+                `;
+                grid.appendChild(item);
+            });
+
+            document.getElementById('ranking-section').style.display = 'block';
+        }
+
         function displayBooks(page) {
             const grid = document.getElementById('book-grid');
             grid.innerHTML = '';
@@ -557,7 +742,7 @@
                                 <div class="book-metadata">${person.ourBook.author} | ${person.ourBook.publisher}</div>
                             </div>
                             <div class="reason-box">
-                                <p class="quote-text">💌 청년에게: "${person.ourBook.reason}"</p>
+                                <p class="quote-text">💬 "${person.ourBook.reason}"</p>
                             </div>
                         </div>
                     </a>
@@ -575,7 +760,7 @@
                                 <div class="book-metadata">${person.goodBook.author} | ${person.goodBook.publisher}</div>
                             </div>
                             <div class="reason-box">
-                                <p class="quote-text">💌 청년에게: "${person.goodBook.reason}"</p>
+                                <p class="quote-text">💬 "${person.goodBook.reason}"</p>
                             </div>
                         </div>
                     </a>
@@ -586,7 +771,7 @@
                 
                 cardDiv.innerHTML = `
                     <div class="recommender-top">
-                        <span class="recommender-name">💙 ${person.name} 님이 청년에게 ✨</span>
+                        <span class="recommender-name">💙 ${person.name} 님의 PICK ✨</span>
                         <span class="recommender-role">(${person.company} ${person.role})</span>
                     </div>
                     <div class="card-tabs">
@@ -740,6 +925,27 @@
                 document.getElementById('stat-books').innerText = uniqueBooks.size;
                 document.getElementById('stat-people').innerText = allPeople.length;
                 document.getElementById('stats-wrapper').style.display = 'flex';
+
+                // 가장 많이 추천받은 책 집계
+                const bookRanking = new Map();
+                rows.forEach(row => {
+                    const title = row[idx.title];
+                    if (!title) return;
+                    const key = title + '|' + (row[idx.author] || '');
+                    if (!bookRanking.has(key)) {
+                        bookRanking.set(key, {
+                            title: title,
+                            author: row[idx.author] || '',
+                            publisher: row[idx.publisher] || '',
+                            cover: row[idx.cover] || '',
+                            url: row[idx.url] || '',
+                            count: 0
+                        });
+                    }
+                    bookRanking.get(key).count += 1;
+                });
+
+                renderRanking(Array.from(bookRanking.values()));
 
                 filterContent();
                 document.getElementById('search-input').addEventListener('input', filterContent);
